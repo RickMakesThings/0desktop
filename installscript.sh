@@ -1,7 +1,11 @@
 #!/bin/bash
 
-#  Install desktop environment software
-sudo dnf -y install bspwm sxhkd picom lightdm rofi feh dunst pavucontrol alacritty nemo nemo-compare nemo-fileroller nemo-image-converter nano firefox xorg-x11-server-xorg roboto baobab gnome-calender gnome-clocks gnome-calculator gnome-system-monitor gnome-screenshot cava nm-connection-editor blueberry ffmpeg ffmpegthumbnailer redshift timeshift protonvpn-cli playerctl kde-connect
+# Add repos
+sudo dnf -y install \https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install \https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Install desktop environment software
+sudo dnf -y install bspwm sxhkd picom lightdm rofi feh dunst pavucontrol alacritty nemo nemo-compare nemo-fileroller nemo-image-converter nano firefox xorg-x11-server-Xorg google-roboto-fonts google-roboto-mono-fonts baobab gnome-calender gnome-clocks gnome-calculator gnome-system-monitor gnome-screenshot cava nm-connection-editor blueman ffmpeg-free ffmpegthumbnailer redshift timeshift protonvpn-cli playerctl kde-connect
 
 # Extra software
 #sudo dnf -y install lutris darktable gimp ardour6 krita scribus blender libreoffice-writer libreoffice-calc libreoffice-impress evolution obs-studio elementary-code xephyr vlc freecad inkscape icecat
