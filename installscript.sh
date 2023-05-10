@@ -59,19 +59,21 @@ cp /usr/share/doc/sxhkd/examples/sxhkdrc ~/.config/sxhkd/
 #picom
 cp /usr/share/doc/picom/examples/picom.sample.conf ~/.config/picom/picom.conf
 #lightdm
-sudo cp /usr/lib/systemd/system/lightdm.service /etc/systemd/system/
-sudo systemctl enable lightdm.service
+sudo cp ~/.config/0desktop/configs/lightdm/lightdm.conf /etc/lightdm/
 #rofi
 cp /usr/share/doc/rofi/examples/config.rasi ~/.config/rofi/config.rasi
 #logiops
-sudo cp contrib/90-logiops.rules /etc/udev/rules.d/
-sudo cp contrib/logid.cfg /etc/
 #dunst
 #alacritty
 #firefox
 #librewolf
 #icecat
 #cava
+
+
+# Enable Services
+sudo systemctl enable lightdm.service
+sudo systemctl set-default graphical.target
 
 
 # Extra files
