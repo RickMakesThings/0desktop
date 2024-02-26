@@ -1,0 +1,180 @@
+/*
+ *
+ */
+
+@import "colours.rasi"
+
+configuration {
+    terminal:                       "alacritty --hold -e";
+	font:							"RobotoMono Nerd Font Mono 12";
+    show-icons:                     true;
+	icon-theme: 					"Tela-cicle-grey-dark";
+//    modes:                          [ combi ];
+//    combi-modes:                    [ run, filebrowser ];
+    display-run: 					" Executables";
+    display-filebrowser: 			" Folders & files";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+    hover-select:                   false;
+    me-select-entry:                "";
+    me-accept-entry:                "!MousePrimary";
+    scroll-method:                  1;
+    no-lazy-grab:                   false;
+    sort:                           true;
+//    sort-fields:                    2;
+//    sorting-method:                 "fzf";
+    window-thumbnail:               true;
+    application-fallback-icon:      "application-default-icon";
+}
+
+button {
+	font:							"RobotoMono Nerd Font Mono 12";
+    padding:                        5px 20px;
+    border-radius:                  40px;
+    background-color:               @grey;
+}
+button selected {
+    background-color:               @accent;
+}
+
+textbox {
+    text-color: @foreground;
+    color: @foreground;
+}
+
+modebar {
+    padding:                        10px 0px;
+    border-radius:                  20px 20px 0px 0px;
+    margin:                         0;
+    spacing:                        0.5%;
+    background-color:               @background;
+    orientation:                    horizontal;
+    expand:                         false;
+}
+
+inputbar {
+	children: 						[ entry ];
+    orientation:                    vertical;
+    background-color:               @black;
+    text-color:                     @foreground;
+    expand:                         false;
+	border:							0% 0% 0% 0%;
+    border-radius:                  20px;
+	border-color:					@accent;
+    margin:                         0% 0% 0% 0%;
+    padding:                        0%;
+}
+
+listview {
+    scrollbar:                      true;
+    overlay-scrollbar:              true;
+    background-color:               @background;
+    columns:                        1;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        false;
+    layout:                         vertical;
+}
+
+scrollbar {
+    background-color:               @black;
+    handle-width:                   10px;
+    handle-radius:                  10px;
+    handle-color:                   @grey;
+    border-radius:                  20px;
+    margin:                         0px 0px 20px 0.3%;
+}
+
+mainbox {
+    background-color:               @background;
+	border-color:					@black;
+    children:                       [ sidebar,prompt, listview ];
+    spacing:                       	2%;
+    padding:                        0% 0.5%;
+}
+
+
+sidebar {
+    orientation:                    horizontal;
+    background-color:               @background;
+    spacing:                        2%;
+}
+
+window {
+    orientation:                    vertical;
+    background-color:               @black;
+    text-color:                     @foreground;
+	border:							0px;
+    border-radius:                  20px;
+	width:							50em;
+    height:                         30em;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
+    spacing:                        0;
+    children:                       [ inputbar, modebar , mainbox ];
+}
+
+entry {
+    background-color:               #00000000;
+    text-color:                     @grey;
+    placeholder-color:              @grey;
+    expand:                         true;
+    placeholder:                    "󰍉 Search...";
+    padding:                        10px 20px;
+    horizontal-align:               0.5;
+}
+
+prompt {
+    enabled: 						false;
+	padding: 						0% 0% 0% 0.4%;
+	background-color: 				#00000000;
+	text-color: 					@foreground;
+    placeholder:                    "Search";
+}
+element {
+    background-color:               #00000000;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  20px;
+}
+
+element-icon {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+    horizontal-align:               0;
+    vertical-align:                 0;
+    size:                           36px;
+    border-radius:                  40px;
+    padding:                        0% 20px 0% 0px;
+}
+
+element-text {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+}
+
+element selected {
+    background-color:               @grey;
+    text-color:                     @white;
+}
+
+element.alternate.normal {
+    background-color:               @black;
+}
+element active {
+    background-color:               @black;
+    text-color:                     @grey;
+}
+element selected.active {
+    background-color:               @green;
+    text-color:                     @white;
+
+}
+element selected.urgent {
+    background-color:               @blue;
+    text-color:                     @white;
+}
