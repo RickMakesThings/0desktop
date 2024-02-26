@@ -1,0 +1,189 @@
+/*
+ *
+ */
+
+@import "colours.rasi"
+
+configuration {
+	font:							"RobotoMono Nerd Font Mono 12";
+    show-icons:                     true;
+	icon-theme: 					"Tela-cicle-grey-dark";
+    modes:                          [ combi ];
+    combi-modes:                    [ drun, window, run ];
+    display-drun: 					"";
+//    display-window: 				"";
+    drun-display-format:            "{name}";
+    disable-history:                true;
+	sidebar-mode: 					false;
+    hover-select:                   true;
+    me-select-entry:                "";
+    me-accept-entry:                "!MousePrimary";
+    ml-row-up:                      "";
+    ml-row-down:                    "";
+    scroll-method:                  0;
+//    kb-element-prev:                "";
+//    kb-element-next:                "";
+    no-lazy-grab:                   false;
+    auto-select:                    false;
+    kb-page-prev:                   "ScrollUp";
+    kb-page-next:                   "ScrollDown";
+    sort:                           true;
+//    sort-fields:                    2;
+    sorting-method:                 "fzf";
+    window-thumbnail:               false;
+    application-fallback-icon:      "application-default-icon";
+}
+
+button {
+	font:							"RobotoMono Nerd Font Mono 18";
+    padding:                        5px 0px;
+    border-radius:                  40px;
+    background-color:               @grey;
+    cursor:                         pointer;
+}
+button selected {
+    background-color:               @accent;
+}
+
+button selected.urgent{
+    background-color:               @red;
+}
+button normal.urgent{
+    background-color:               @red;
+}
+
+sidebar {
+    orientation:                    vertical;
+    background-color:               @black;
+    margin:                         2% 0%;
+    spacing:                        2%;
+}
+
+filler {
+    background-color:               @black;
+
+}
+
+leftbar {
+    children:                       [ sidebar, filler ];
+    width:                          64px;
+    padding:                        0px 10px;
+    margin:                         0;
+    background-color:               @black;
+    orientation:                    vertical;
+    expand:                         false;
+}
+
+inputbar {
+	children: 						[ prompt, entry ];
+    background-color:               @black;
+    text-color:                     @foreground;
+    expand:                         false;
+	border:							0% 0% 0% 0%;
+    border-radius:                  20px;
+	border-color:					@accent;
+    margin:                         0% 0% 0% 0%;
+    padding:                        0%;
+}
+
+listview {
+    background-color:               @background;
+    columns:                        1;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+    scrollbar:                      true;
+    overlay-scrollbar:              true;
+}
+scrollbar {
+    background-color:               @background;
+    handle-width:                   10px;
+    handle-radius:                  5px;
+    handle-color:                   @black;
+    border-radius:                  20px;
+    margin:                         0px 0px 0px 10px;
+}
+
+mainbox {
+    background-color:               @background;
+    border-radius:                  20px;
+	border-color:					@black;
+    children:                       [ inputbar, listview ];
+    spacing:                       	2%;
+    padding:                        2% 1% 2% 1%;
+}
+
+
+window {
+    orientation:                    horizontal;
+    background-color:               @black;
+    text-color:                     @foreground;
+	border:							0px;
+    border-radius:                  20px;
+	width:							24em;
+    height:                         42.4em;
+    location:                       northwest;
+    x-offset:                       1.5em;
+    y-offset:                       3.8em;
+    children:                       [ leftbar , mainbox ];
+}
+
+
+prompt {
+    enabled: 						true;
+	font:							"RobotoMono Nerd Font Mono 18";
+	padding: 						0.2% 0.3% 0% 0.55%;
+	background-color: 				#00000000;
+	text-color: 					@foreground;
+//    placeholder:                    "does this even do anything";
+}
+
+entry {
+    background-color:               #00000000;
+    text-color:                     @foreground;
+    placeholder-color:              @foreground;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search";
+    padding:                        10px 20px;
+    cursor:                         text;
+}
+
+element {
+    background-color:               #00000000;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  30px;
+    padding:                        5px 0px;
+}
+
+element-icon {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+    horizontal-align:               0;
+    vertical-align:                 0;
+    size:                           36px;
+    border-radius:                  40px;
+    padding:                        0% 20px 0% 10px;
+}
+
+element-text {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+}
+
+element selected {
+    background-color:               @accent;
+    text-color:                     @white;
+}
+ element selected.active {
+    background-color:               @grey;
+ }
+element selected.urgent {
+    background-color:               @red;
+    text-color:                     @white;
+}
