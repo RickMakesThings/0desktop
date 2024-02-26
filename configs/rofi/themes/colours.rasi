@@ -1,0 +1,18 @@
+/*
+ *
+ */
+
+* {
+    background:   #0c0a0f;
+    foreground:   #727272;
+    accent:		  #255457;
+    black:        #181818;
+    grey:         #4a4a4a;
+    white:        #c8c8c8;
+    red:          #572525;
+    teal:         #25574a;
+    yellow:       #575725;
+    green:        #485725;
+    blue:         #254057;
+    orange:       #573825;
+}
