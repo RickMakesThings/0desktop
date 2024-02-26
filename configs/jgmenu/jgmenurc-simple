@@ -1,0 +1,64 @@
+stay_alive           = 0
+#hide_on_startup     = 0
+csv_cmd              = apps
+csv_no_dirs          = 0
+tint2_look           = 0
+#at_pointer          = 1
+terminal_exec        = alacritty
+terminal_args        = 
+#monitor             = 0
+hover_delay 	     = 30
+#hide_back_items     = 1
+position_mode        = pointer
+
+#menu_margin_x       = 0
+#menu_margin_y       = 0
+#menu_width          = 100
+menu_padding_top     = 10
+menu_padding_right   = 10
+menu_padding_bottom  = 10
+menu_padding_left    = 10
+menu_radius          = 20
+#menu_border         = 0
+#menu_halign         = left
+menu_valign          = center
+
+#sub_spacing         = 1
+#sub_padding_top     = auto
+#sub_padding_right   = auto
+#sub_padding_bottom  = auto
+#sub_padding_left    = auto
+#sub_hover_action    = 1
+
+#item_margin_x       = 3
+#item_margin_y       = 3
+item_height          = 30
+item_padding_x       = 10
+item_radius          = 15
+#item_border         = 0
+#item_halign         = left
+
+sep_height          = 1
+
+font                 = RobotoMono Nerd Fonts Mono 11
+#font_fallback       = xtg
+icon_size            = 0
+icon_text_spacing    = 0
+#icon_theme          =
+#icon_theme_fallback = xtg
+
+arrow_string         = 🢒
+arrow_width          = 10
+
+color_menu_bg	     = #0c0a0f 100
+color_norm_fg	     = #a5a5a5 100
+color_sel_bg	     = #255457 100
+color_sel_fg	     = #a5a5a5 100
+
+#color_sel_border    =  8
+#color_menu_border   =  8
+#color_norm_bg	     = #FFFFFF 0
+#color_sep_fg        = #ffffff 20
+
+csv_name_format     = %n (%g)
+csv_single_window   = 0
