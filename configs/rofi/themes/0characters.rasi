@@ -1,0 +1,186 @@
+/*
+ *
+ */
+
+@import "colours.rasi"
+
+configuration {
+	font:							"RobotoMono Nerd Font Mono 12";
+    show-icons:                     true;
+    disable-history:                false;
+    hover-select:                   true;
+    me-select-entry:                "";
+    me-accept-entry:                "!MousePrimary";
+    scroll-method:                  0;
+    no-lazy-grab:                   false;
+    sort:                           false;
+    ml-row-up:                      "";
+    ml-row-down:                    "";
+    kb-page-prev:                   "ScrollUp";
+    kb-page-next:                   "ScrollDown";
+    auto-select:                    false;
+}
+
+
+textbox {
+    text-color: @foreground;
+    color: @foreground;
+}
+
+inputbar {
+	children: 						[ entry ];
+    orientation:                    vertical;
+    background-color:               @black;
+    text-color:                     @foreground;
+    expand:                         false;
+	border:							0% 0% 0% 0%;
+    border-radius:                  20px;
+	border-color:					@accent;
+    margin:                         0% 0% 0% 0%;
+    padding:                        0%;
+    cursor: text;
+}
+
+listview {
+    scrollbar:                      true;
+    overlay-scrollbar:              true;
+    background-color:               @background;
+    columns:                        8;
+    fixed-columns:                  true;
+    lines:                          8;
+    flow: horizontal;
+    spacing:                        5px;
+    cycle:                          false;
+    dynamic:                        false;
+    layout:                         vertical;
+}
+
+scrollbar {
+    background-color:               @black;
+    handle-width:                   10px;
+    handle-radius:                  10px;
+    handle-color:                   @grey;
+    border-radius:                  20px;
+    margin:                         7px 0px 10px 20px;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ mode-switcher, listview ];
+    padding:                        0.8% 0.5%;
+    border-radius:                  20px;
+}
+
+mode-switcher {
+    spacing: 20px;
+    background-color: #00000000;
+    padding: 10px 0px 20px;
+}
+button {
+	font:							"RobotoMono Nerd Font Mono 24";
+    border-radius: 20px;
+    background-color: @black;
+    text-color: @grey;
+    cursor: pointer;
+}
+button selected {
+    text-color: @black;
+    background-color: @accent;
+}
+
+window {
+    orientation:                    vertical;
+    background-color:               @black;
+    text-color:                     @foreground;
+	border:							0px;
+    border-radius:                  20px;
+	width:							700px;
+    height:                         640px;
+    location:                       northwest;
+    x-offset:                       0;
+    y-offset:                       0;
+    spacing:                        0;
+    children:                       [ inputbar, mainbox ];
+}
+
+entry {
+    background-color:               #00000000;
+    text-color:                     @grey;
+    placeholder-color:              @grey;
+    expand:                         true;
+    placeholder:                    "Characters";
+    padding:                        10px 20px;
+    horizontal-align:               0.5;
+    cursor: text;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						0% 0% 0% 0.4%;
+	background-color: 				#00000000;
+	text-color: 					@foreground;
+    cursor: text;
+}
+
+element {
+    background-color:               #00000000;
+    text-color:                     #00000000;
+    orientation:                    vertical;
+    border-radius:                  20px;
+    padding:                        10px;
+}
+
+element-text {
+    enabled:                        false;
+	font:							"RobotoMono Nerd Font Mono 10";
+    background-color: 				#00000000;
+    text-color:       				inherit;
+    expand:                         true;
+    vertical-align:                 0.5;
+    horizontal-align:               0.5;
+    padding:                        0px 0px;
+}
+
+element-icon {
+    background-color: 				#00000000;
+    text-color:       				@grey;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           30px;
+    border-radius:                  40px;
+    padding:                        12px 2px;
+}
+
+element normal.active {
+    text-color:                     @orange;
+}
+
+element normal.urgent {
+    background-color:               @black;
+    border-radius:                  20px;
+}
+
+element alternate.active {
+    text-color:                     @orange;
+}
+
+element alternate.urgent {
+    background-color:               @black;
+    border-radius:                  20px;
+}
+
+element selected {
+    background-color:               @grey;
+    text-color:                     @white;
+    border-radius:                  50px;
+}
+
+element selected.active {
+    background-color:               @orange;
+    text-color:                     @white;
+}
+
+element selected.urgent {
+    background-color:               @grey;
+    border-radius:                  50px;
+}
