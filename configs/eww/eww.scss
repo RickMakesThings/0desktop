@@ -1,0 +1,844 @@
+////////////////////////
+// Import system colours
+////////////////////////
+@import "../0desktop/customisation/colours/colours.scss";
+
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+  font-family: RobotoMono Nerd Font Mono;
+  //font-weight: bold;
+  transition: 250ms ease-in-out;
+  padding: 0;
+  margin: 0;
+}
+
+/////////////////
+// Window Styles
+//________________________________________________________________________
+
+.backgroundbar {
+  background-color: $HEX_DBg;
+  border: 0;
+  border-radius: 20px;
+}
+
+.bar {
+//  background-color: rgba(0,0,0,0.5);
+}
+
+.desktop-mouse-actions-bottom {
+  background-color: rgba(0,0,0,0);
+  min-width: 3840px;
+  min-height: 10px;
+}
+
+.clicktoclose {
+//  background-color: rgba(0,0,0,0.5);
+}
+
+.confirm-block-box {
+  background-color: rgba(0,0,0,0.8);
+}
+.dialog {
+  background-color: $HEX_DBg;
+  border-radius: 20px;
+  padding: 30px;
+}
+.dialog-text {
+  font-size: 15px;
+  padding: 20px 0px 40px;
+  color: $HEX_Grey2;
+}
+.dialog-title {
+  font-size: 18px;
+  padding: 0px 0px 10px;
+  color: $HEX_Grey2;
+}
+
+.dialog button {
+  color: $HEX_Black2;
+  padding: 10px 20px;
+  margin: 0px 5px;
+  border-radius: 20px;
+}
+.dialog button:hover {
+  opacity: 0.7;
+}
+.updateandshutdown {
+  background-color: $HEX_Grey2;
+}
+.updateandshutdown:hover {
+  background-color: $HEX_DAccent;
+}
+.shutdownnow {
+  background-color: $HEX_Red;
+  margin : 200px;
+}
+.cancel {
+  background-color: $HEX_Grey2;
+}
+.powermenu-filler {
+  min-width: 80px;
+}
+tooltip {
+  color: $HEX_DFg;
+  background-color: $HEX_DBg;
+  font-size: 15px;
+}
+tooltip > box {
+  min-height: 25px;
+  padding: 0px 15px;
+}
+
+
+.weather {
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0) ;
+}
+.weather-widget {
+  border-radius: 20px;
+  background-color: $HEX_DBg;
+  padding: 20px;
+}
+
+.weather-widget-icon {
+  font-size: 80px;
+  font-family: Noto Color Emoji;
+  opacity: 0.5;
+  margin-right: 25px;
+}
+.weather-widget-temp {
+  font-size: 24px;
+  color: $HEX_White1;
+}
+.weather-widget-desc {
+  font-size: 15px;
+  padding-left: 40px;
+  color: $HEX_DFg;
+  opacity: 0.9;
+}
+
+.weather-widget-desc slider {
+  min-height: 10px;
+}
+
+.weather-widget-desc scale trough {
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: $HEX_Black4;
+  border-radius: 5px;
+  min-width: 120px;
+}
+.weather-widget-desc scale trough highlight {
+  border-radius: 5px;
+}
+
+.weather-widget-scale-wind scale trough highlight {
+  background-color: $HEX_Grey2;
+}
+.weather-widget-scale-rain scale trough highlight {
+  background-color: $HEX_BlueLight;
+}
+
+.gnome-weather-button {
+  color: $HEX_DFg;
+  background-color: $HEX_Black2;
+  font-size: 20px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 20px;
+}
+.gnome-weather-button:hover {
+  background-color: $HEX_Black4;
+}
+
+
+
+.timedate-widget {
+  border-radius: 20px;
+  background-color: $HEX_DBg;
+  padding: 20px;
+}
+
+.analogue-clock-seconds {
+  color: $HEX_DAccent;
+  background-color: $HEX_Black4;
+}
+
+.analogue-clock-minutes {
+  color: $HEX_White2;
+  background-color: rgba(0,0,0,0);
+}
+
+.analogue-clock-hours {
+  color: $HEX_DFg;
+  background-color: rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 50px $HEX_DFg inset;
+}
+
+.timedate-widget-details {
+  min-height: 40px;
+  min-width: 320px;
+  margin: 10px 0px 10px 40px;
+  border-radius: 20px;
+  color: $HEX_DFg;
+  background-color: $HEX_Black4;
+}
+
+
+.timedate-widget-details-label {
+  min-width: 80px;
+  border-radius: 20px;
+  color: $HEX_DBg;
+  background-color: $HEX_Grey1;
+}
+.timedate-widget-details-copy {
+  font-size: 16px;
+  min-width: 200px;
+}
+.timedate-widget-details-copy:hover {
+  color: $HEX_DBg;
+  background-color: $HEX_Grey2;
+  border-radius: 20px;
+}
+.timedate-widget-details-app {
+  font-size: 20px;
+  min-width: 40px;
+}
+.timedate-widget-details-app:hover {
+  border-radius: 20px;
+  color: $HEX_DBg;
+  background-color: $HEX_Grey2;
+}
+
+
+
+
+.audio {
+  border-radius: 20px;
+  background-color: rgba(0,0,0,0) ;
+}
+.audio-widget {
+  border-radius: 20px;
+  background-color: $HEX_DBg;
+}
+
+.audio-widget-output-device {
+  color: $HEX_DFg;
+  background-color: $HEX_Black3;
+  border-radius: 20px;
+  min-height: 40px;
+  margin-top: 20px;
+  padding: 0px 20px;
+}
+.audio-widget-device-list {
+  color: $HEX_DFg;
+  background-color: $HEX_Black2;
+  border-radius: 20px;
+}
+.audio-widget-device-list-item {
+  border-radius: 20px;
+  padding: 10px 0px 10px 0px;
+}
+.audio-widget-device-list-item:hover {
+  background-color: $HEX_Black4;
+}
+.audio-widget-more-settings {
+  color: $HEX_DFg;
+  background-color: $HEX_Black3;
+  border-radius: 20px;
+  min-width: 40px;
+  min-height: 40px;
+  margin: 20px 20px 0px 0px;
+}
+.audio-widget-output-device:hover, .audio-widget-more-settings:hover {
+  background-color: $HEX_Black4;
+}
+
+.nowplaying {
+  margin: 25px;
+}
+
+.audio-widget-art {
+  border-radius: 20px;
+//  min-width: 100px;
+//  min-height: 100px;
+
+}
+.audio-widget-bg-art {
+  opacity: 0.15;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.audio-widget-info {
+  color: $HEX_White2;
+  margin-left: 20px;
+}
+.audio-widget-info-artist {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.audio-widget-info-title {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.audio-widget-info-album {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.media-buttons {
+  margin-left: -10px;
+}
+.media-buttons button {
+  color: $HEX_White2;
+  font-size: 18px;
+  margin-right: 15px;
+  margin-left: 15px;
+  min-width: 48px;
+  min-height: 48px;
+}
+.media-buttons button:hover {
+  color: $HEX_Black4;
+  background-color: $HEX_Grey2;
+  border-radius: 40px;
+}
+
+.audio-widget-sliders {
+  padding: 40px;
+}
+.audio-widget-sliders slider {
+  min-height: 40px;
+}
+
+.volume-control button, .volume-control-muted button {
+  font-size: 30px;
+  margin-right: 10px;
+  color: $HEX_DBg;
+  min-width: 40px;
+  border-radius: 20px;
+}
+.volume-control scale trough, .volume-control-muted scale trough {
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 350px;
+}
+.volume-control scale trough highlight, .volume-control-muted scale trough highlight {
+  border-radius: 20px;
+  min-width: 40px;
+}
+
+
+.volume-control button:hover, .volume-control-muted button:hover, .mic-control button:hover, .mic-control-muted button:hover {
+  opacity: 0.8;
+}
+
+.volume-control, .volume-control-muted {
+  margin-bottom: 15px;
+}
+.mic-control, .mic-control-muted {
+  margin-top: 15px;
+}
+
+.mic-control button, .mic-control-muted button {
+  font-size: 30px;
+  margin-right: 10px;
+  color: $HEX_DBg;
+  min-width: 40px;
+  border-radius: 20px;
+}
+
+.mic-control scale trough highlight, .mic-control-muted scale trough highlight {
+  border-radius: 20px;
+  min-width: 40px;
+}
+.mic-control scale trough, .mic-control-muted scale trough {
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 350px;
+}
+
+
+.volume-control button, .volume-control scale trough highlight {
+  background-color: $HEX_DAccent;
+}
+
+.mic-control button, .mic-control scale trough highlight {
+  background-color: $HEX_Red;
+}
+.volume-control-muted button, .volume-control-muted scale trough highlight, .mic-control-muted button, .mic-control-muted scale trough highlight {
+  background-color: $HEX_Grey2;
+}
+
+/////////////////
+// Widget styles
+//_______________________________________________________________________
+
+
+
+
+.startbutton {
+  //  background-color: rgba(0,255,0,0.5);
+    opacity: 0.6;
+    color: $HEX_DBg;
+    padding: 28px 20px 0px 38px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .startbuttonicon {
+    border: 7px solid;
+    border-color: rgba(0,0,0,0);
+    border-radius: 25px;
+    box-shadow: 0px 0px 0px 3px $HEX_DFg inset;
+  }
+  .startbutton-eventbox:hover .startbutton{
+    opacity: 1;
+  }.startbutton-eventbox:hover .startbutton .startbuttonicon {
+    background-color: rgba(0,0,0,0);
+    border-radius: 25px;
+    border: 7px solid;
+    border-color: $HEX_DAccent;
+    box-shadow: 0px 0px 0px 0px $HEX_DAccent inset;
+  }
+  
+  .startbutton-eventbox:active .startbutton .startbuttonicon {
+    opacity: 1;
+    background-color: $HEX_Black4;
+    border-radius: 25px;
+    border: 5px solid;
+    border-color: $HEX_DAccent;
+    box-shadow: 0px 0px 0px 3px $HEX_DFg inset;
+  }
+
+
+  //  .startbutton {
+  //  //  background-color: rgba(0,255,0,0.5);
+  //    color: $HEX_DBg;
+  //    padding: 26px 30px 0px 30px;
+  //    min-width: 40px;
+  //    min-height: 40px;
+  //  }
+  //  .startbuttonicon {
+  //    border: 7px solid;
+  //    border-color: rgba(0,0,0,0);
+  //    border-radius: 20px;
+  //    box-shadow: 0px 0px 0px 3px $HEX_DFg inset;
+  //  }
+  //  .startbutton-eventbox:hover .startbutton .startbuttonicon {
+  //    background-color: rgba(0,0,0,0);
+  //    border-radius: 20px;
+  //    border: 5px solid;
+  //    border-color: $HEX_DAccent;
+  //    box-shadow: 0px 0px 0px 1px $HEX_DAccent inset;
+  //  }
+  //  
+  //  .startbutton-eventbox:active .startbutton .startbuttonicon {
+  //    background-color: rgba(0,0,0,0);
+  //    border-radius: 20px;
+  //    border: 5px solid;
+  //    border-color: $HEX_Pink;
+  //    box-shadow: 0px 0px 0px 3px $HEX_Pink inset;
+  //  }
+
+
+// Workspace indicators ==============================================
+.bspwm-workspaces {
+  margin-right: 25px;
+}
+.workspacebutton {
+  padding: 30px 0px 0px 0px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.workspace-icon-focused {
+  color: $HEX_Black4;
+  box-shadow: 0px 0px 0px 20px $HEX_DAccent inset;
+  border: 8px rgba(0,0,0,0) solid;
+  border-radius: 20px;
+}
+
+.workspace-icon-occupied {
+  opacity: 0.6;
+  color: rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 20px $HEX_DFg inset;
+  border: 10px rgba(0,0,0,0) solid;
+  border-radius: 20px;
+}
+.workspace-icon-empty {
+  opacity: 0.6;
+  color: rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 3px $HEX_DFg inset;
+  border: 10px rgba(0,0,0,0) solid;
+  border-radius: 20px;
+}
+
+.workspace-eventbox:hover .workspace-icon-focused {
+  color: $HEX_Black4;
+  box-shadow: 0px 0px 0px 20px $HEX_DAccent inset;
+  border: 8px $HEX_Black4 solid;
+  border-radius: 20px;
+}
+
+.workspace-eventbox:hover .workspace-icon-occupied {
+  opacity: 1;
+  color: $HEX_Black2;
+  box-shadow: 0px 0px 0px 20px $HEX_DFg inset;
+  border: 8px $HEX_Black4 solid;
+  padding: 2px;
+}
+.workspace-eventbox:hover .workspace-icon-empty {
+  opacity: 1;
+  color: $HEX_DFg;
+  background-color: $HEX_Black4;
+  box-shadow: 0px 0px 0px 3px $HEX_DFg inset;
+  border: 8px $HEX_Black4 solid;
+  border-radius: 20px;
+  padding: 2px;
+}
+
+.add-workspace-button {
+  opacity: 0.5;
+  font-size: 22px;
+  color: $HEX_DFg;
+  border: 0px $HEX_Black4 solid;
+}
+.workspace-eventbox:hover .add-workspace-button {
+  opacity: 1;
+  color: $HEX_Black4;
+  background-color: $HEX_DFg;
+  box-shadow: 0px 0px 0px 8px $HEX_Black4 inset;
+  border-color: $HEX_Black4;
+  border-radius: 20px;
+}
+
+
+// Window indicators ==============================================
+
+.windowbutton {
+  padding: 30px 0px 0px 0px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.window-icon-normal {
+  opacity: 0.4;
+  border-color: $HEX_Black4;
+  border-radius: 20px;
+}
+.window-icon-focused {
+  opacity: 0.6;
+  border: 5px solid;
+  border-color: rgba(0,0,0,0);
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 5px $HEX_DAccent inset;
+}
+.window-icon-hidden {
+  opacity: 0.2;
+  border-color: $HEX_Black4;
+  border-radius: 20px;
+}
+
+.window-label {
+  font-size: 15px;
+  opacity: 0.4;
+  border-color: $HEX_Black4;
+  padding: 0px 15px 0px 15px;
+}
+
+.window-eventbox:hover .window-icon-normal {
+  opacity: 0.9;
+  box-shadow: 0px 0px 0px 10px $HEX_Black4 inset;
+  border-radius: 20px;
+}
+.window-eventbox:hover .window-icon-focused {
+  opacity: 0.9;
+  border: 5px solid;
+  border-color: $HEX_Black4;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 5px $HEX_DAccent inset;
+}
+.window-eventbox:hover .window-icon-hidden {
+  opacity: 0.4;
+  box-shadow: 0px 0px 0px 10px $HEX_Black4 inset;
+  border-radius: 20px;
+}
+
+.window-label-eventbox:hover .window-label {
+  opacity: 0.6;
+  border: 0 solid;
+  border-radius: 20px;
+  background-color: $HEX_DAccent;
+  box-shadow: 0px 0px 0px 5px $HEX_Black4 inset;
+}
+
+
+.window-actions-container-hidden {
+  opacity: 0;
+  margin-left: -50px;
+}
+
+.window-actions-container, .window-actions-container:hover {
+  opacity: 1;
+  margin-left: 0px;
+}
+
+.window-actions-label1, .window-actions-label2, .window-actions-label3 {
+//  opacity: 0;
+  min-width: 20px;
+  color: rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 50px $HEX_Black4 inset;
+  border: 10px solid rgba(0,0,0,0);
+  border-radius: 20px;
+//  margin-left: -50px;
+}
+
+//.window-label-eventbox:hover ~ .window-actions-container *,
+//.window-actions-eventbox:hover ~ .window-actions-eventbox *,
+//.window-actions-eventbox:hover *
+//{
+//  opacity: 1;
+//  margin-left: 0px;
+//}
+
+.window-actions-eventbox:hover .window-actions-label1 {
+  color: $HEX_DBg;
+  box-shadow: 0px 0px 0px 50px $HEX_Red inset;
+  border: 10px solid $HEX_Black4;
+}
+.window-actions-eventbox:hover .window-actions-label2 {
+  color: $HEX_DBg;
+  box-shadow: 0px 0px 0px 50px $HEX_YellowLight inset;
+  border: 10px solid $HEX_Black4;
+}
+.window-actions-eventbox:hover .window-actions-label3 {
+  color: $HEX_DBg;
+  box-shadow: 0px 0px 0px 50px $HEX_TealDark inset;
+  border: 10px solid $HEX_Black4;
+}
+
+// Bar Center (weather, date + time, notifications) ==============================================
+
+.bar-center {
+  color: $HEX_DFg;
+  font-size: 16px;
+}
+.bar-center-button {
+  padding: 30px 0px 0px 0px;
+  min-height: 40px;
+  min-width: 40px;
+}
+
+.weatherbuttonicon, .weatherbuttonicon-active {
+  font-family: Noto Color Emoji;
+  opacity: 0.5;
+  font-size: 14px;
+  border: 5px solid rgba(0,0,0,0);
+}
+.weatherbuttonicon-active {
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+}
+.bar-center-eventbox:hover .weatherbuttonicon, .bar-center-eventbox:hover .weatherbuttonicon-active {
+  opacity: 1;
+  border-radius: 20px;
+  border: 5px solid $HEX_Black4;
+  background-color: $HEX_Black4;
+}
+.timedatebuttonicon, .timedatebuttonicon-active {
+  font-family: Noto sans;
+  letter-spacing: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left : 10px;
+  padding-right : 10px;
+  border: 5px solid rgba(0,0,0,0);
+}
+.timedatebuttonicon-active {
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+  opacity: 0.8;
+}
+.bar-center-eventbox:hover .timedatebuttonicon, .bar-center-eventbox:hover .timedatebuttonicon-active {
+  opacity: 1;
+  color: $HEX_White2;
+  border-radius: 20px;
+  border: 5px solid $HEX_Black2;
+  box-shadow: 0px 0px 0px 50px $HEX_Black4 inset;
+}
+.bar-notifications {
+  min-width: 40px;
+  font-size: 24px;
+}
+.bar-center-eventbox:hover .bar-notifications {
+  color: $HEX_White4;
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 5px $HEX_Black4 inset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Bar Right (phone, audio, connections, settings) ==============================================
+.bar-right {
+  color: $HEX_DFg;
+  font-size: 24px;
+}
+.bar-right-button, .bar-right-button-last {
+  padding: 30px 10px 0px 10px;
+  min-height: 40px;
+  min-width: 40px;
+}
+.bar-right-button-last {
+  padding-right: 40px;
+}
+
+.searchbuttonicon, .phonebuttonicon, .audiobuttonicon, .connectionsbuttonicon, .settingsbuttonicon {
+  opacity: 0.8;
+}
+.phonebuttonicon-disconnected, .audiobuttonicon-muted, .connectionsbuttonicon-disconnected {
+  opacity: 1;
+  color: $HEX_Red;
+}
+.audiobuttonicon-active {
+  opacity: 1;
+  color: $HEX_Pink;
+  background-color: $HEX_Black2;
+  border-radius: 20px;
+}
+
+.bar-right-eventbox:hover .searchbuttonicon, .bar-right-eventbox:hover .phonebuttonicon, .bar-right-eventbox:hover .audiobuttonicon, .bar-right-eventbox:hover .connectionsbuttonicon, .bar-right-eventbox:hover .settingsbuttonicon {
+  opacity: 1;
+  background-color: $HEX_Black4;
+  border-radius: 20px;
+}
+.bar-right-eventbox:hover .phonebuttonicon  {
+  color: $HEX_GreenDark;  
+}
+.bar-right-eventbox:hover .audiobuttonicon  {
+  color: $HEX_Pink;  
+}
+.bar-right-eventbox:hover .connectionsbuttonicon {
+  color: $HEX_BlueLight;
+}
+.bar-right-eventbox:hover .settingsbuttonicon {
+//  color: $HEX_DAccent;
+  background-color: $HEX_Black4;
+//  box-shadow: 0px 0px 0px 5px $HEX_DBg inset;
+}
+
+
+
+//.bar-right-buttons {
+////  background-color: rgba(0,255,0,0.3);
+//  color: $HEX_DFg;
+//  font-size: 24px;
+//  min-width: 40px;
+//  min-height: 40px;
+//}
+//
+//.settingsbutton {
+////  background-color: rgba(0,255,255,0.3);
+//  color: $HEX_DFg;
+//  padding: 30px 40px 0px 0px;
+//  font-size: 24px;
+//  min-width: 40px;
+//  min-height: 40px;
+//  margin-left: 20px;
+//}
+//
+//.phonebuttonicon-normal, .audiobuttonicon-normal, .connectionsbuttonicon-normal, .settingsbuttonicon-normal {
+//  opacity: 0.7;
+//}
+//
+//.phonebuttonicon-hover, .audiobuttonicon-hover, .connectionsbuttonicon-hover, .settingsbuttonicon-hover {
+//  background-color: $HEX_Grey0;
+//  border-radius: 20px;
+//  opacity: 1;
+//}
+//.audiobuttonicon-hover {
+//  background-color: $HEX_TealLight;
+//}
+//.connectionsbuttonicon-hover {
+//  background-color: $HEX_BlueLight;
+//}
+//.settingsbuttonicon-hover {
+//  background-color: $HEX_DAccent;
+//}
+
+
+
+.desktop-weather-overlay {
+  border: solid 20px;
+  border-color: #000000;
+  border-radius: 40px;
+  min-width: 3840px;
+  min-height: 2160px;
+}
+.desktop-weather-overlay-hidden {
+  border: solid 20px;
+  border-color: #000000;
+  border-radius: 40px;
+  min-width: 3840px;
+  min-height: 2160px;
+  background-color: rgba(0,0,0,0);
+}
+
+
+.desktop-mouse-bottom-buttons {
+  min-width: 10px;
+  min-height: 5px;
+  background-color: rgba(0,0,0,0);
+}
+.desktop-mouse-bottom-center {
+  min-width: 3830px;
+  min-height: 5px;
+  background-color: rgba(0,0,0,0);
+}
+
+
+/*
+.volume-control slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.volume-control scale trough highlight {
+  all: unset;
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+.volume-control scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.label-ram {
+  font-size: large;
+}
+.workspaces button:hover {
+  color: #D35D6E;
+}
+*/
