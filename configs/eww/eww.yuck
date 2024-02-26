@@ -1,0 +1,320 @@
+;_________________________________________________________________
+;=============
+;Eww Variables
+;=============
+;_________________________________________________________________
+
+; Image for the weather overlay
+(defvar weather-overlay "none")
+
+; Scroll eventboxes to switch workspaces (bar workspace-indicator, bottom-bar)
+(defvar scroll-workspaces-up "bspc desktop -f prev.local")
+(defvar scroll-workspaces-down "bspc desktop -f next.local")
+
+; Scroll eventboxes to switch active window
+(defvar scroll-windows-up "bspc node -f prev.local.window")
+(defvar scroll-windows-down "bspc node -f next.local.window")
+
+; Workspace indicators
+(deflisten workspaces "scripts/workspace-indicators.sh")
+; Workspace right-clicked bar indicator
+(defvar workspace-indicator-rightclick "")
+; Window indicators
+(deflisten windows "scripts/window-indicators.sh")
+; Window right-clicked bar indicator
+(defvar window-indicator-rightclick "")
+; Window actions
+(defvar window-actions "window-actions-container-hidden")
+
+; Weather icon & overlay
+(defvar bar-weather-icon "🌡️")
+(defvar bar-weather-icon-tooltip "No data")
+(defvar weather-overlay-class "desktop-weather-overlay")
+
+; Weather widget
+(deflisten weather-widget "scripts/widget-weather.sh")
+(defvar weatherbuttonicon "weatherbuttonicon")
+(defvar weather-widget-class "weather-widget-hidden")
+(defvar weather-widget-temp "-C")
+(defvar weather-widget-feel "-C")
+(defvar weather-widget-location "Location")
+(defvar weather-widget-desc "Couldn't fetch data")
+(defvar weather-widget-wind "|--km/h")
+(defvar weather-widget-rain "0.0mm")
+
+; Time and date
+(deflisten timedate-widget "scripts/widget-timedate.sh")
+(defpoll analogue-clock :interval "1s" "scripts/analogue-clock.sh")
+(defpoll bar-datetime :interval "1s" "date '+%a %d %b  %H:%M'")
+(defvar timedate-widget-tooltip "")
+(defvar timedate-widget-time "")
+(defvar timedate-widget-date "")
+(defvar timedatebuttonicon "timedatebuttonicon")
+
+; Notifications
+(defvar bar-notifications "" )
+(defvar bar-notifications-tooltip "" )
+
+; Audio widget
+(deflisten audio-widget "scripts/widget-audio.sh")
+(defvar audio-widget-class "audio-widget-hidden")
+(defvar audiobuttonicon "audiobuttonicon")
+(defvar audio-widget-output "USB Audio")
+(defvar audio-widget-output-list "false")
+(defvar audio-widget-volume "100")
+(defvar audio-widget-volume-slider "volume-control")
+(defvar audio-widget-mic "100")
+(defvar audio-widget-mic-icon "" )
+(defvar audio-widget-mic-slider "mic-control")
+(defvar audio-icon-volume "󱄠")
+(defvar audio-icon-tooltip "Audio")
+(defvar audio-muted "false")
+
+; Reset all windows and buttons to none
+; $ewwcmd close start phone audio connections quicksettings
+(defvar eww-soft-reset 
+"$ewwcmd update window-actions=window-actions-container-hidden"
+)
+
+;_________________________________________________________________
+;===========
+;Eww Windows
+;===========
+;_________________________________________________________________
+
+; Desktop window - Gives the desktop rounded corners and the ability to display a weather overlay
+(defwindow desktop
+  :monitor 0
+  :windowtype "desktop"
+  :stacking "bg"
+  :wm-ignore false
+  :geometry (geometry :x "0px" :y "-20px"
+    :width "100%"
+    :height "2160px"
+  :anchor "top center")
+  (desktop-weather-overlay))
+
+; Backgroundbar - Fake bar for eyecandy, use window "bar" for functionality
+(defwindow backgroundbar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bg"
+  :reserve (struts :distance "60px" :side "top")
+  :geometry (geometry :x "0px"
+    :y "20px"
+    :width "3780"
+    :height "40px"
+  :anchor "top center")
+  (box :orientation "h"))
+
+; Bar - Actual bar icons/functions
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :wm-ignore false
+  :geometry (geometry :x "0px"
+    :y "-10px"
+    :width "3860"
+    :height "70px"
+  :anchor "top center")
+  :space-evenly false
+  :spacing "0"
+  (centerbox :orientation "h" :width "3840px"
+    (bar-left)
+    (bar-center)
+    (bar-right)))
+
+; Desktop-mouse-actions - A tiny, 5px tall, invisible bar at the bottom of the desktop for bottom hot-corners and dock toggle
+(defwindow desktop-mouse-actions
+  :monitor 0
+  :windowtype "utility"
+  :stacking "bg"
+  :wm-ignore true
+  :geometry (geometry :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "5px"
+  :anchor "bottom center")
+  (desktop-mouse-actions-bottom))
+
+; Click to Close - Transparent fullscreen "close"-button that displays under Eww windows
+(defwindow clicktoclose
+  :monitor 0
+  :windowtype "utility"
+  :stacking "fg"
+  :wm-ignore false
+  :geometry (geometry :x "0px"
+    :y "60px"
+    :width "110%"
+    :height "2100px"
+  :anchor "top center")
+  (button :onclick "$dir0/scripts/eww-helper.sh clicktoclose"
+    :onmiddleclick "$dir0/scripts/eww-helper.sh clicktoclose"
+    :onrightclick "$dir0/scripts/eww-helper.sh clicktoclose"))
+
+; Confirmation dialog - Force attention to dialog box
+(defwindow confirm
+  :monitor 0
+  :windowtype "utility"
+  :stacking "fg"
+  :wm-ignore true
+  :geometry (geometry :x "-1%" :y "-1%"
+    :width "102%" :height "102%"
+  :anchor "top center")
+  (centerbox :orientation "v" :class "confirm-block-box" :space-evenly false
+    (box :height "45%" :width "100%")
+    (centerbox :orientation "h" :height "10%" :width "100%" 
+      (box)
+      (box :class "dialog" :orientation "v" :space-evenly false
+        (label :text "Shutting down" :class "dialog-title")  
+        (label :text "System will automatically shut down after xx seconds..." :class "dialog-text")
+        (box :space-evenly false (button :cursor "pointer" :onclick "gnome-software --autoupdate --mode=updates && $ewwcmd close confirm" :class "updateandshutdown" (label :text "󰚰 Update & power off") )
+              (box :class "powermenu-filler")
+              (button :cursor "pointer" :onclick "shutdown now" :class "shutdownnow" (label :text "Power off now") )
+              (button :cursor "pointer" :onclick "$ewwcmd close confirm" :class "cancel" (label :text "Cancel") ))
+       )
+      (box))
+    (box :height "45%" :width "100%")))
+
+; System widgets (weather/ date + time/ notifications/ phone/ audio/ connections)
+(defwindow weather
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry :x "0px" :y "80px"
+  :anchor "top center")
+  (literal :content weather-widget))
+
+(defwindow timedate
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry :x "0px" :y "80px"
+  :anchor "top center")
+  (literal :content timedate-widget))
+
+(defwindow audio
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry :x "-30px" :y "80px"
+  :anchor "top right")
+  (literal :content audio-widget))
+
+
+;_________________________________________________________________
+;===========
+;Eww Widgets
+;===========
+;_________________________________________________________________
+
+; Desktop-weather-overlay - Wallpaper overlay for rounded corners (css: radius) & weather
+(defwidget desktop-weather-overlay []
+  (eventbox :onrightclick "$direww/scripts/rightclick.sh desktop" :onscroll "eval $($ewwcmd get scroll-workspaces-{})"
+    (image :path "\$dir0/customisation/weather-overlay/${weather-overlay}.png"
+    :halign "start"
+    :orientation "h"
+    :image-width "3840px"
+    :image-height "2160px"
+    :class "${weather-overlay-class}"
+    :visible true
+  ))
+)
+
+; Bar Left - Start button, workspace indicators, and window overview
+(defwidget bar-left []
+  (box :orientation "h" :valign "start" :space-evenly false :spacing "0"
+    (eventbox :class "startbutton-eventbox"
+    :onclick "$ewwcmd update startbutton-class='clicked' && $dir0/scripts/rofi-helper.sh startmenu"
+    :onrightclick "cat $jgcmd'menu.csv' | jgmenu --simple"
+    :onscroll "eval $($ewwcmd get scroll-workspaces-{})" 
+      (box :class "startbutton" 
+      (label :text " " :class "startbuttonicon")))
+    (box :orientation "h" (literal :content workspaces))
+    (box :orientation "h" (literal :content windows))
+    (eventbox :hexpand true
+              :halign "fill"
+              :onclick "$dir0/scripts/eww-helper.sh clicktoclose"
+              :onhover "${eww-soft-reset}")
+  )
+)
+
+; Bar Center - Weather, clock, notifications
+(defwidget bar-center []
+  (box :orientation "h" :valign "start" :space-evenly false :class "bar-center"
+    (eventbox :onclick "$dir0/scripts/eww-helper.sh weather-widget" :class "bar-center-eventbox" 
+      (box :class "bar-center-button" :orientation "h"  (label :text "${bar-weather-icon}" :class "${weatherbuttonicon}" :tooltip "${bar-weather-icon-tooltip}")))
+    (eventbox :onclick "$dir0/scripts/eww-helper.sh timedate-widget" :class "bar-center-eventbox" 
+      (box :class "bar-center-button" :orientation "h"  (label :text "${bar-datetime}" :class "${timedatebuttonicon}" :tooltip "${timedate-widget-tooltip}")))
+    (eventbox :onclick "" :class "bar-center-eventbox" 
+      (box :class "bar-center-button" :orientation "h"  (label :text "${bar-notifications}" :class "bar-notifications" :tooltip "${bar-notifications-tooltip}"))) ;  
+  )
+  
+)
+
+; Bar Right - Search, Phone, Audio, Connections, Settings
+(defwidget bar-right []
+  (box :orientation "h"  :valign "start" :space-evenly false :class "bar-right"
+    (eventbox :hexpand true
+      :halign "fill"
+      :onclick "$dir0/scripts/eww-helper.sh clicktoclose"
+      :onhover "${eww-soft-reset}")
+      (eventbox :class "bar-right-eventbox"
+    :onclick "$dir0/scripts/rofi-helper.sh search"
+      (box :class "bar-right-button"
+      (label :text "󰍉" :class "searchbuttonicon" :tooltip "Search...")))
+    (eventbox :class "bar-right-eventbox"
+      (box :class "bar-right-button"
+      (label :text "" :class "phonebuttonicon" :tooltip "Connected to Pixel 6")))
+    (eventbox :class "bar-right-eventbox"
+    :onclick "$dir0/scripts/eww-helper.sh audio-widget"
+    :onmiddleclick "amixer set Master toggle"
+    :onscroll "eval $($ewwcmd get scroll-volume-icon-{})"
+     (box :class "bar-right-button"
+     (label :text "${audio-icon-volume}" :class "${audiobuttonicon}" :tooltip "${audio-icon-tooltip}")))
+    (eventbox :class "bar-right-eventbox" ;
+     (box :class "bar-right-button" 
+     (label :text "󰖟" :class "connectionsbuttonicon" :tooltip "Connected via LAN")))
+    (eventbox :class "bar-right-eventbox"
+     (box :class "bar-right-button-last"
+     (label :text "󰒓" :class "settingsbuttonicon")))
+  )
+)
+
+
+; Bar-right button icon variables
+(defvar phonebutton-icon "normal")
+(defvar audiobutton-icon "normal")
+(defvar connectionsbutton-icon "normal")
+(defvar settingsbutton-icon "normal")
+
+(defvar scroll-volume-icon-up "$dir0/scripts/media-hotkey-overlay.sh up")
+(defvar scroll-volume-icon-down "$dir0/scripts/media-hotkey-overlay.sh down")
+
+
+; Desktop-mouse-actions-bottom - Eventboxes for desktop mouse actions (hot-corners/edges)
+(defwidget desktop-mouse-actions-bottom []
+  (box :orientation "h" :halign "start" :spacing "0"
+  (eventbox :valign "start" :halign "baseline" :width "10px" :class "desktop-mouse-bottom-buttons"
+    :cursor "none" 
+    :onclick "bspc desktop -f prev.local" 
+    :onrightclick "cat $jgcmd'windowmanager.csv' | jgmenu --simple" 
+    :onscroll "eval $($ewwcmd get scroll-workspaces-{})" 
+    :ondropped "eval bspc node $(xdotool getactivewindow) -d prev" 
+    (box :valign "start" :halign "baseline" :width "10px" :class "desktop-mouse-bottom-buttons"))
+  (eventbox :valign "start" :halign "baseline" :width "3830px" :class "desktop-mouse-bottom-center"
+    :cursor "normal" 
+    :onclick "" 
+    :onrightclick "cat $jgcmd'windowmanager.csv' | jgmenu --simple" 
+    :onscroll "eval $($ewwcmd get scroll-workspaces-{})" 
+    (box :valign "start" :halign "baseline" :width "3830px" :class "desktop-mouse-bottom-center"))
+  (eventbox :valign "start" :halign "baseline" :width "10px" :class "desktop-mouse-bottom-buttons"
+    :cursor "none" 
+    :onclick "bspc desktop -f next.local" 
+    :onrightclick "cat $jgcmd'windowmanager.csv' | jgmenu --simple" 
+    :onscroll "eval $($ewwcmd get scroll-workspaces-{})"  
+    :ondropped "eval bspc node $(xdotool getactivewindow) -d next" 
+    (box :valign "start" :halign "baseline" :width "10px" :class "desktop-mouse-bottom-buttons"))
+  )
+)
